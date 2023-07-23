@@ -4,10 +4,10 @@ declare(strict_types = 1);
 
 namespace Drush\Commands\marvin_git_incubator;
 
-use Drush\Commands\marvin\CommandsBase;
 use Drupal\marvin_incubator\CommandsBaseTrait;
 use Drupal\marvin_incubator\Robo\GitHooksTaskLoader;
 use Drupal\marvin_incubator\Utils;
+use Drush\Commands\marvin\CommandsBase;
 use Robo\Collection\CollectionBuilder;
 use Robo\Contract\TaskInterface;
 
@@ -17,6 +17,8 @@ class GitHooksCommands extends CommandsBase {
   use GitHooksTaskLoader;
 
   /**
+   * @phpstan-return array<string, marvin-task-definition>
+   *
    * @hook on-event marvin:composer:post-install-cmd
    * @hook on-event marvin:composer:post-update-cmd
    */
@@ -33,20 +35,27 @@ class GitHooksCommands extends CommandsBase {
   }
 
   /**
+   * @param string[] $packageNames
+   *
    * @command marvin:git-hooks:deploy
+   *
    * @bootstrap none
+   *
    * @hidden
    *
    * @marvinArgPackages packages
    */
-  public function gitHooksDeploy(array $packages): CollectionBuilder {
-    return $this->getTaskGitHooksDeploy($packages);
+  public function gitHooksDeploy(array $packageNames): CollectionBuilder {
+    return $this->getTaskGitHooksDeploy($packageNames);
   }
 
-  protected function getTaskGitHooksDeploy(array $packages): CollectionBuilder {
+  /**
+   * @param string[] $packageNames
+   */
+  protected function getTaskGitHooksDeploy(array $packageNames): CollectionBuilder {
     $managedDrupalExtensions = $this->getManagedDrupalExtensions();
     $cb = $this->collectionBuilder();
-    foreach ($packages as $packageName) {
+    foreach ($packageNames as $packageName) {
       $extension = $managedDrupalExtensions[$packageName];
       $cb->addTask($this->getTaskDeployGitHooksPackage($extension['path']));
     }

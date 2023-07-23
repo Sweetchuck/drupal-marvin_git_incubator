@@ -1,0 +1,11 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Call to an undefined method Drupal\\\\marvin_git\\\\Robo\\\\Task\\\\GitCommitMsgValidatorTask\\|Robo\\\\Collection\\\\CollectionBuilder\\:\\:setFileName\\(\\)\\.$#"
+			count: 1
+			path: ../Commands/marvin_git_incubator/GitHookCommitMsgCommands.php
+
+		-
+			message: "#^Call to an undefined method Drupal\\\\marvin_incubator\\\\Robo\\\\Task\\\\GitHooksDeployTask\\|Robo\\\\Collection\\\\CollectionBuilder\\:\\:setRootProjectDir\\(\\)\\.$#"
+			count: 1
+			path: ../Commands/marvin_git_incubator/GitHooksCommands.php

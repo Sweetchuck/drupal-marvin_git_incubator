@@ -77,6 +77,9 @@ class GitHookCommands extends GitHookCommandsBase {
   }
 
   /**
+   * @param string $packagePath
+   * @param string[] $refNames
+   *
    * @command marvin:git-hook:post-update
    * @hidden
    */

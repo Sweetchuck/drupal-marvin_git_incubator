@@ -1,0 +1,54 @@
+{
+    "type": "drupal-drush",
+    "name": "drupal/marvin_git_incubator",
+    "description": "",
+    "license": "GPL-3.0-or-later",
+    "keywords": [
+        "drupal",
+        "drush"
+    ],
+    "homepage": "https://drupal.org/project/marvin_git_incubator",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/marvin_git_incubator",
+        "source": "https://git.drupalcode.org/project/marvin_git_incubator"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+        "php": ">=8.2",
+        "consolidation/robo": "^4.0",
+        "drupal/marvin": "3.x-dev",
+        "drupal/marvin_incubator": "3.x-dev",
+        "drupal/marvin_git": "2.x-dev",
+        "sweetchuck/robo-git": "3.x-dev",
+        "sweetchuck/robo-string": "2.x-dev"
+    },
+    "require-dev": {
+        "behat/mink-goutte-driver": "^1.2",
+        "drush/drush": "^12.0",
+        "mikey179/vfsstream": "^1.6",
+        "phpspec/prophecy-phpunit": "^2.0",
+        "phpunit/phpunit": "^9.5",
+        "symfony/phpunit-bridge": "^5.3",
+        "weitzman/drupal-test-traits": "dev-master#b902b579a99393dabd7eaad4f0041c9da7e29152"
+    },
+    "suggest": {
+        "drush/drush": "^12.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Drush\\Commands\\marvin_git_incubator\\": "Commands/marvin_git_incubator/",
+            "Drupal\\marvin_git_incubator\\": "src/"
+        }
+    },
+    "extra": {
+        "drush": {
+            "services": {
+                "drush.services.yml": "*"
+            }
+        }
+    }
+}
